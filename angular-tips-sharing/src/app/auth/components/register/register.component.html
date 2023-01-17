@@ -1,0 +1,109 @@
+<div class="form-register-login form-register">
+    <form [formGroup]="mainForm">
+
+        <h1 class="h2 text-center fw-normal">Inscrivez vous!</h1>
+        
+        <div *ngIf="!!messageServeur && messageServeur.message"
+        class="alert alert-danger text-center">
+        {{ messageServeur.message }} </div>
+
+        <div *ngIf="!user" class="w-100 btn btn-lg btn-danger mt-2 mb-3 d-flex justify-content-center" ><asl-google-signin-button type='standard' size='large' width="400" ></asl-google-signin-button></div>
+        
+        <div class="formulaire-champs d-flex justify-content-between">
+            <div [formGroup]="profilInfoForm">
+                <h1 class="h3 mb-3 fw-normal">Votre profil</h1>
+                <div class="mb-2">
+                    <label for="formFile" class="form-label">Photo de profil </label>
+                    <input type="file" formControlName="picture" class="form-control"
+                        [ngClass]="formChecker.inputValideOrInvalid(profilInfoForm.controls['picture'])"
+                        (change)="onFileSelected($event)" placeholder="picture">
+                    <div *ngIf="formChecker.inputIsValid(profilInfoForm.controls['picture'])"
+                        class="invalid-feedback d-block">
+                        {{formChecker.getFormControlErrorText(profilInfoForm.controls['picture'], pictureTypeFile) }}
+                    </div>
+                </div>
+
+                <div class="form-floating mt-1">
+                    <input formControlName="firstName" class="form-control"
+                        [ngClass]="formChecker.inputValideOrInvalid(profilInfoForm.controls['firstName'])"
+                        placeholder="first name">
+                    <label>first name</label>
+                    <div *ngIf="formChecker.inputIsValid(profilInfoForm.controls['firstName'])"
+                        class="invalid-feedback d-block">
+                        {{formChecker.getFormControlErrorText(profilInfoForm.controls['firstName']) }} </div>
+                </div>
+
+                <div class="form-floating mt-1">
+                    <input formControlName="lastName" class="form-control"
+                        [ngClass]="formChecker.inputValideOrInvalid(profilInfoForm.controls['lastName'])"
+                        placeholder="last name">
+                    <label>last name</label>
+                    <div *ngIf="formChecker.inputIsValid(profilInfoForm.controls['lastName'])"
+                        class="invalid-feedback d-block">
+                        {{formChecker.getFormControlErrorText(profilInfoForm.controls['lastName']) }} </div>
+                </div>
+
+                <div class="form-floating mt-1">
+                    <input formControlName="pseudo" type="text" class="form-control" placeholder="Pseudo"
+                        [ngClass]="formChecker.inputValideOrInvalid(pseudoCtrl)">
+                    <label>Pseudo </label>
+                    <div *ngIf="formChecker.inputIsValid(pseudoCtrl)" class="invalid-feedback d-block">
+                        {{formChecker.getFormControlErrorText(pseudoCtrl) }} </div>
+                </div>
+            </div>
+            <div class="formulaire-identifiant">
+                <h1 class="h3 mb-3 fw-normal">Vos identifiants </h1>
+                <div [formGroup]="emailForm">
+                    <div class="form-floating mt-1">
+                        <input formControlName="email" type="email" class="form-control"
+                            [ngClass]="formChecker.inputValideOrInvalid(emailCtrl)" placeholder="name@example.com">
+                        <label>Addresse email</label>
+                        <div *ngIf="formChecker.inputIsValid(emailCtrl)" class="invalid-feedback d-block">
+                            {{formChecker.getFormControlErrorText(emailCtrl) }} </div>
+                    </div>
+
+                    <div class="form-floating mt-1">
+                        <input formControlName="confirmEmail" type="email" class="form-control"
+                            [ngClass]="formChecker.inputValideOrInvalid(confirmEmailCtrl)"
+                            placeholder="name@example.com">
+                        <label>Confirmer l'addresse email</label>
+                        <div *ngIf="formChecker.inputIsValid(confirmEmailCtrl)" class="invalid-feedback d-block">
+                            {{formChecker.getFormControlErrorText(confirmEmailCtrl) }} </div>
+                    </div>
+                </div>
+                <!-- <small class="error-text" *ngIf="showEmailError$ | async"></small> -->
+                <div *ngIf="showEmailError$ | async" class="invalid-feedback d-block"> Les deux adresses email ne
+                    correspondent
+                    pas </div>
+
+                <div [formGroup]="passwordForm">
+                    <div class="form-floating mt-1">
+                        <input formControlName="password" type="password" class="form-control"
+                            [ngClass]="formChecker.inputValideOrInvalid(passwordCtrl)" placeholder="Mot de passe">
+                        <label>Mot de passe</label>
+                        <div *ngIf="formChecker.inputIsValid(passwordCtrl)" class="invalid-feedback d-block">
+                            {{formChecker.getFormControlErrorText(passwordCtrl) }} </div>
+                    </div>
+                    <div class="form-floating mt-1">
+                        <input formControlName="confirmPassword" type="password" class="form-control"
+                            [ngClass]="formChecker.inputValideOrInvalid(confirmPasswordCtrl)"
+                            placeholder="Confirmer le mot de passe">
+                        <label>Confirmer le mot de passe</label>
+                        <div *ngIf="formChecker.inputIsValid(confirmPasswordCtrl)" class="invalid-feedback d-block">
+                            {{formChecker.getFormControlErrorText(confirmPasswordCtrl) }} </div>
+                    </div>
+                </div>
+                <div *ngIf="showPasswordError$ | async" class="invalid-feedback d-block"> Les deux mots de passe ne
+                    correspondent
+                    pas </div>
+            </div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit"
+            [disabled]="loading || mainForm.invalid || !mainForm.touched" (click)="onSubmitForm()">M'inscrire
+            
+            <div  *ngIf="loading" class="spinner-border text-light" role="status">
+                <span class="sr-only"></span>
+              </div>
+        </button>
+    </form>
+</div>

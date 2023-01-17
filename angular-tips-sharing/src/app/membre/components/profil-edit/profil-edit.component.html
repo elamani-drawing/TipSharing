@@ -1,0 +1,67 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-4">
+                    <!-- chargement des informations de profil  -->
+                    <app-profil-info [membre]="membre"></app-profil-info>
+                    <!-- bouton pour modifier ces informations  -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 container-content-profil">
+            <div class="card mb-4" *ngIf="mainForm" [formGroup]="mainForm">
+                <div class="sub-form-gray border border-white rounded p-3">
+                    <!-- les messages d'erreur et de succes  -->
+                    <div *ngIf="messageSuccesServer &&  messageSuccesServer.length>0" class="alert alert-success">
+                        {{messageSuccesServer}}
+                    </div>
+                    <div *ngIf="messageErrorServer &&  messageErrorServer.length>0" class="alert alert-danger">
+                        {{messageErrorServer}}
+                    </div>
+                    <!-- le formulaire  -->
+                    <div>
+                        <h1 class="h3 mb-3 fw-normal">Modification du profil</h1>
+                        <h6 class="mb-5">Veuillez remplir les champs que vous souhaitez modifier</h6>
+                        <div class="mb-2">
+                            <label for="formFile" class="form-label">Photo de profil </label>
+                            <input type="file" formControlName="picture" class="form-control"
+                                [ngClass]="formChecker.inputValideOrInvalid(pictureCtrl)"
+                                (change)="onFileSelected($event)" placeholder="picture">
+                            <div *ngIf="formChecker.inputIsValid(pictureCtrl)" class="invalid-feedback d-block">
+                                {{formChecker.getFormControlErrorText(pictureCtrl, pictureTypeFile) }}
+                            </div>
+                        </div>
+                        <div class="form-floating mt-1">
+                            <input formControlName="firstName" class="form-control"
+                                [ngClass]="formChecker.inputValideOrInvalid(firstNameCtrl)" placeholder="first name">
+                            <label>First name</label>
+                            <div *ngIf="formChecker.inputIsValid(firstNameCtrl)" class="invalid-feedback d-block">
+                                {{formChecker.getFormControlErrorText(firstNameCtrl)}} </div>
+                        </div>
+                        <div class="form-floating mt-1">
+                            <input formControlName="lastName" class="form-control"
+                                [ngClass]="formChecker.inputValideOrInvalid(lastNameCtrl)" placeholder="last name">
+
+                            <label>Last name</label>
+                            <div *ngIf="formChecker.inputIsValid(lastNameCtrl)" class="invalid-feedback d-block">
+                                {{formChecker.getFormControlErrorText(lastNameCtrl) }} </div>
+                        </div>
+                        <div class="form-floating mt-1">
+                            <input formControlName="pseudo" type="text" class="form-control" placeholder="Pseudo"
+                                [ngClass]="formChecker.inputValideOrInvalid(pseudoCtrl)">
+
+                            <label>Pseudo </label>
+                            <div *ngIf="formChecker.inputIsValid(pseudoCtrl)" class="invalid-feedback d-block">
+                                {{formChecker.getFormControlErrorText(pseudoCtrl) }} </div>
+                        </div>
+                        <button class="mt-4 btn btn-primary" [disabled]="!(messageInfoFormulaire.length>0)" (click)="onSubmit()">Sauvegarder</button>
+                        <div class="alert alert-info mt-2" role="alert" *ngIf="messageInfoFormulaire.length>0">
+                            {{messageInfoFormulaire}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

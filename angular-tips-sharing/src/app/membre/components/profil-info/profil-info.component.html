@@ -1,0 +1,14 @@
+<div class="d-flex text-black profil-header">
+    <div class="flex-shrink-0 container-img">
+        <img src="{{membre.picture}}" *ngIf="membre" alt="Photo de profil de {{membre.pseudo}}"
+            class="img-fluid" style="width: 180px; border-radius: 10px;">
+    </div>
+    <div class="">
+        <div class="flex-grow-1 ms-3">
+            <h5 class="mb-1" *ngIf="membre">{{membre.lastName}}</h5>
+            <h6 class="mb-1" *ngIf="membre">{{membre.firstName}}</h6>
+            <p class="mb-2 pb-1" style="color: #2b2a2a;" *ngIf="membre">@{{membre.pseudo}}</p>
+        </div>
+    </div>
+
+</div>

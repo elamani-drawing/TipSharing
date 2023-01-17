@@ -1,0 +1,11 @@
+
+.form-register-profil-edit .sub-form-gray {
+    background-color: #efefef;
+    padding: 20px;
+}
+
+@media screen and (max-width: 750px) {
+    .container-content-profil {
+        margin-top: 20px;
+    };
+} 

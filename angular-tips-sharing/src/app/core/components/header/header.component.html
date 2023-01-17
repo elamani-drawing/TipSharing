@@ -1,0 +1,20 @@
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li class="logo"><a routerLink="/" class="nav-link px-2 text-white"><i class="fa-solid fa-share-nodes"></i>   Tips Sharing</a></li>
+            </ul>
+
+            <div class="text-end">
+                <a routerLink="/" class="btn btn-outline-light me-2">Accueil</a>
+                <a routerLink="/tips" class="btn btn-outline-light me-2">Tips</a>
+                <a routerLink="/tips/new" *ngIf="authService.connected" class="btn btn-outline-light me-2">New Tip</a>
+                <a routerLink="/login" *ngIf="!authService.connected" class="btn btn-outline-light me-2">Login</a>
+                <a routerLink="/register" *ngIf="!authService.connected" class="btn btn-outline-light me-2">Register</a>
+                <a routerLink="/profil" *ngIf="authService.connected" class="btn btn-outline-light me-2">Profil</a>
+                <a routerLink="/admin" *ngIf="authService.connected && authService.isAdmin()" class="btn btn-outline-light me-2">Admin</a>
+                <a routerLink="/logout" *ngIf="authService.connected" class="btn btn-outline-light me-2">deconnexion</a>
+            </div>
+        </div>
+    </div>
+</header>

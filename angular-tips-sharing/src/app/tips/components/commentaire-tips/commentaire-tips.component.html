@@ -1,0 +1,16 @@
+<div *ngIf="commentaire" class="commentaire " [ngClass]="index%2==0? 'grey':''">
+    <div class="header-commentaire d-flex flex-wrap align-items-center gap-3">
+        <!-- si c'est un lien de l'api   -->
+        <img *ngIf="!linkToolService.isExternalLink(commentaire.User.picture) && !linkToolService.beginStartHttp(commentaire.User.picture)" src="{{linkToolService.buildLinkPictureMember(commentaire.User.picture)}}" alt="Photo de profil de {{tip.User.pseudo}}">
+        <!-- si c'est un lien d'un autre site ou de notre site mais que sont lien est deja construit -->
+        <img *ngIf="linkToolService.isExternalLink(commentaire.User.picture) || linkToolService.beginStartHttp(commentaire.User.picture)" src="{{commentaire.User.picture}}" alt="Photo de profil de {{tip.User.pseudo}}">
+        <span><h6 routerLink="/profil/{{commentaire.User.pseudo}}">{{commentaire.User.pseudo}}</h6></span>
+        <span *ngIf="commentaire.User.pseudo==tip.User.pseudo">(auteur)</span>
+        <span>{{commentaire.createdAt | date}}</span>
+        <!-- les administrateurs peuvent supprimer des commentaires  -->
+        <button type="button" *ngIf="user && user.isAdmin" class="btn btn-danger" (click)="delete()" >Supprimer</button>
+    </div>
+    <div class="content-commentaire pt-2">
+        {{commentaire.comment}}
+    </div>
+</div>

@@ -1,0 +1,18 @@
+.tip-card {
+    box-sizing: border-box;
+    width: 95%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+    border-radius: 5px;
+}
+
+.tip-card  img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.tip-card p {
+    font-weight: 300;
+    font-size: 16px;
+}

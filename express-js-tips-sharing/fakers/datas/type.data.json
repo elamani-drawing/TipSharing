@@ -1,0 +1,23 @@
+[
+    {
+        "label": "Naturel"
+    },
+    {
+        "label": "Aliment"
+    },
+    {
+        "label": "Minéral"
+    },
+    {
+        "label": "Outil"
+    },
+    {
+        "label": "Block"
+    },
+    {
+        "label": "Arme"
+    },
+    {
+        "label": "Objet magique"
+    }
+]

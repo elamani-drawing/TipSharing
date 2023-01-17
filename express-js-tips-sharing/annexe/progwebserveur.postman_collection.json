@@ -1,0 +1,1006 @@
+{
+	"info": {
+		"_postman_id": "a11617a7-f768-49f1-89ec-bf323d55b376",
+		"name": "progwebserveur",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18886029"
+	},
+	"item": [
+		{
+			"name": "member",
+			"item": [
+				{
+					"name": "profil",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/membre/profil?pseudo=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"membre",
+								"profil"
+							],
+							"query": [
+								{
+									"key": "pseudo",
+									"value": "",
+									"description": "le pseudo de l'utilisateur, si vous ne renseignez rien l'api renvera le pseudo de le profil de l'utilisateur connecter"
+								}
+							]
+						},
+						"description": "Renvoi la chaine de caractère « hello »"
+					},
+					"response": []
+				},
+				{
+					"name": "profl update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "Bobi",
+									"description": "le nouveau firstName",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastName",
+									"value": "Sponge",
+									"description": "le nouveau lastName",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "newPseudo",
+									"value": "Bobi",
+									"description": "le nouveau pseudo de l'utilisateur",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "bob.sponge@gmail.com",
+									"description": "l'email actuel",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "newEmail",
+									"value": "bob.sponge@gmail.com",
+									"description": "le nouvel email",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "SPonge45$",
+									"description": "le mot de passe actuel",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "newPassword",
+									"value": "SPonge45$",
+									"description": "le nouveau mot de passe",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "picture",
+									"description": "la nouvelle photo de profil",
+									"type": "file",
+									"src": "/D:/User/Moi/Downloads/tes.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/membre/profil/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"membre",
+								"profil",
+								""
+							]
+						},
+						"description": "Prend en paramètre un pseudo, un email, un nom, un prénom et un mot de passe.Renvoi « OK » si la création de l’utilisateur c’est bien déroulée et « KO » dans le cas échéant (pensez à gérer les doublons pseudo / email)"
+					},
+					"response": []
+				},
+				{
+					"name": "tips valide d'un membre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/membre/tips/Bobi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"membre",
+								"tips",
+								"Bobi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tout les tips de la personne connecter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/membre/tips/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"membre",
+								"tips",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "admin list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Bobi",
+									"description": "le pseudo/email de la personne qui doit etre promue",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/user/promote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"user",
+								"promote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin ban user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "100",
+									"description": "L'id de l'utilisateur à bannir/débannir",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/user/ban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"user",
+								"ban"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tips list (invalide)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/tips",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"tips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "valider tips/tipId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tipId",
+									"value": "950",
+									"description": "l'id du tips à supprimer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/tips/valider",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"tips",
+								"valider"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tips",
+			"item": [
+				{
+					"name": "post tips/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "le titre de mon tips",
+									"description": "le titre du tips",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "le contenu du tips",
+									"description": "le contenu du tips",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"description": "l'image du tips",
+									"type": "file",
+									"src": "/D:/User/Moi/Downloads/tes.jpg"
+								},
+								{
+									"key": "tags",
+									"value": "tag1",
+									"description": "le tag du tips",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "tag2",
+									"description": "un autre tag pour le tips",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "tag3",
+									"description": "et ainsi de suite",
+									"type": "text"
+								},
+								{
+									"key": "rarete",
+									"value": "faible",
+									"description": "le niveau de rarete de l'object, voir la routes \"GET raretes\"",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Naturel",
+									"description": "Le type de l'object Naturel, Aliments, Bois etc. voir la routes \"GET types\"",
+									"type": "text"
+								},
+								{
+									"key": "obtention",
+									"value": "craft",
+									"description": "La façon d'obtenir l'object: craft, loot etc. voir la routes \"GET obtentions\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/tips/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete tips/tipId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/tips/201/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								"201",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post tips/commentaires/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tipId",
+									"value": "2",
+									"description": "Un id de tips",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Un fabuleux commentaire",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/tips/commentaires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								"commentaires"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete tips/commentaires/",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/tips/commentaires/1001/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								"commentaires",
+								"1001",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Anonyme",
+			"item": [
+				{
+					"name": "media",
+					"item": [
+						{
+							"name": "test de reception d'un media",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/media/upload/userPDP/default.jpg",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"media",
+										"upload",
+										"userPDP",
+										"default.jpg"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "tips (liste de tips valide)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/tips/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tip/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Un id de tips",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/tips/198",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								"198"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tips/id/commentaires",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Un id de tips",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/tips/201/commentaires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tips",
+								"201",
+								"commentaires"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "Bob",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Sponge",
+									"type": "text"
+								},
+								{
+									"key": "pseudo",
+									"value": "Bobi",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bobsponge@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "SPonge45$",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/D:/User/Moi/Downloads/tes.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register",
+								""
+							]
+						},
+						"description": "Prend en paramètre un pseudo, un email, un nom, un prénom et un mot de passe.Renvoi « OK » si la création de l’utilisateur c’est bien déroulée et « KO » dans le cas échéant (pensez à gérer les doublons pseudo / email)"
+					},
+					"response": []
+				},
+				{
+					"name": "register2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "Patrick",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Star",
+									"type": "text"
+								},
+								{
+									"key": "pseudo",
+									"value": "Patricki",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "patrickStar@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "PAtrick45$",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/D:/User/Moi/Downloads/kakashi.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register",
+								""
+							]
+						},
+						"description": "Prend en paramètre un pseudo, un email, un nom, un prénom et un mot de passe.Renvoi « OK » si la création de l’utilisateur c’est bien déroulée et « KO » dans le cas échéant (pensez à gérer les doublons pseudo / email)"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Bobi",
+									"description": "L'email/pseudo d'un compte",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "SPonge45$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Prend en paramètre un pseudo, un email, un nom, un prénom et un mot de passe.Renvoi « OK » si la création de l’utilisateur c’est bien déroulée et « KO » dans le cas échéant (pensez à gérer les doublons pseudo / email)"
+					},
+					"response": []
+				},
+				{
+					"name": "login Patricki",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Patricki",
+									"description": "L'email/pseudo d'un compte",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "PAtrick45$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Prend en paramètre un pseudo, un email, un nom, un prénom et un mot de passe.Renvoi « OK » si la création de l’utilisateur c’est bien déroulée et « KO » dans le cas échéant (pensez à gérer les doublons pseudo / email)"
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false,
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refresh-token"
+							]
+						},
+						"description": "Renvoi la chaine de caractère « hello »"
+					},
+					"response": []
+				},
+				{
+					"name": "obtentions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/obtentions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"obtentions"
+							]
+						},
+						"description": "Renvoi la chaine de caractère « hello »"
+					},
+					"response": []
+				},
+				{
+					"name": "raretes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/raretes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"raretes"
+							]
+						},
+						"description": "Renvoi la chaine de caractère « hello »"
+					},
+					"response": []
+				},
+				{
+					"name": "types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/types",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"types"
+							]
+						},
+						"description": "Renvoi la chaine de caractère « hello »"
+					},
+					"response": []
+				},
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ping"
+							]
+						},
+						"description": "Renvoi la chaine de caractère « hello »"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozMDIsInBzZXVkbyI6IkJvYmkiLCJpc0FkbWluIjp0cnVlfSwieHNyZiI6IjAzMGM2YWNkOGFiZmI2MDdlNTRlZGM5YjFiZGEyYWMxMDc4ODNhNWFhNzE1NjExYzE5ZGUwOWJiODBlNTk3NjI3YmMyOTI4OTFmZDk4ZmIzNTlmMDNiZGQzMjUxMDNjZjRiMDk2N2ZiNzg5YTA3MDVjMTRmY2U0ZDhhNjI2M2MwIiwiaWF0IjoxNjcyMzQ3MDgzLCJleHAiOjE2NzIzNDg4ODN9.-mqaRyeYM-aHm5P_IHzNpcVXHX83RBbjKCR_qVWSpkQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

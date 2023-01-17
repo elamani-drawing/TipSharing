@@ -1,0 +1,10 @@
+<!-- La page d'affichage des tips -->
+
+<h2 class="text-center mt-2">Liste des tips</h2>
+
+<div class="filer d-flex p-5 justify-content-center">
+    <input class="form-control w-75" id="filter" type="text" [formControl]="searchCtrl" placeholder="Faire une recherche...">
+</div>
+<div class="d-flex justify-content-around ">
+    <app-tips-list [tips_list]="tips_liste_page" class="w-75"></app-tips-list>
+</div>

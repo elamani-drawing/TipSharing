@@ -1,0 +1,54 @@
+.list-tips {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.list-tips li {
+  position: relative;
+  cursor: pointer;
+}
+
+.list-tips li:hover {
+  left: .1em;
+}
+
+.list-tips .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 2 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  position: relative;
+  left: 1px;
+  top: -4.5px;
+  height: 1.8em;
+  min-width: 16px;
+  text-align: right;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.list-tips a {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+}
+
+.list-tips a:hover {
+  color: #e6e6e6;
+  background-color: #2c3a41;
+}
+
+.list-tips a:active {
+  background-color: #525252;
+  color: #fafafa;
+}

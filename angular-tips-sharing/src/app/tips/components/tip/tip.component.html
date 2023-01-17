@@ -1,0 +1,11 @@
+<!-- Un composant tips  -->
+
+<div class="tip-card" *ngIf="tip">
+    <!-- si c'est un lien de l'api   -->
+    <img *ngIf="!linkToolService.isExternalLink(tip.picture)" src="{{linkToolService.buildLinkPictureTip(tip.picture)}}" alt="">
+    <!-- si c'est un lien d'un autre site  -->
+    <img *ngIf="linkToolService.isExternalLink(tip.picture)" src="{{tip.picture}}" alt="">
+    <h2>{{ tip.title | uppercase }}</h2>
+    <p>{{ tip.astuce | shorten: 80}}</p>
+    <button class="btn btn-link" (click)="onViewTip()">Voir plus</button>
+</div>

@@ -1,0 +1,15 @@
+i.fa-delete-left {
+    font-size: 17px;
+}
+
+.tag-overview {
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+input.rounded {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

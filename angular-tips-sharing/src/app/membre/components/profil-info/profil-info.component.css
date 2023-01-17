@@ -1,0 +1,32 @@
+/* petit contour au tour de l'image de profil */
+.profil-header .container-img {
+    padding: 5px;
+    background-color: #efefef;
+    border-radius: 5px;
+    max-width: 200px;
+}
+.profil-header .container-img img{
+    height: 100%;
+}
+
+/* pour les ecrans ayant une taille maximal de 400 */
+@media screen and (max-width: 400px) {
+    /* l'entete de profil (image, lastname, statistique) passe à la ligne */
+    .profil-header{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* centrage de l'image de profil */
+    .profil-header .container-img {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3px;
+    }
+
+    /* decallage de la div pour laisser un espacement */
+    .container-content-profil{
+        margin-top: 10px;
+    }
+
+}

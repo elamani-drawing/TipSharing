@@ -1,0 +1,20 @@
+<div class="tag-input">
+    <form [formGroup]="tagsForm">
+        <div class="input-group p-2">
+            <input type="text" formControlName="tags" class="form-control" placeholder="Saisir du texte"
+                aria-label="Search" aria-describedby="search-addon"
+                [ngClass]=" tagsInputCtrl.value.length >0 ?formChecker.inputValideOrInvalid(tagsInputCtrl) : '' " />
+
+            <button type="button" class="btn btn-primary"
+                [disabled]="tagsInputCtrl.value.length <1 || tagsForm.invalid" (click)="addTag(tagsInputCtrl.value)">Ajouter le tag</button>
+        </div>
+        <div *ngIf="formChecker.inputIsValid(tagsInputCtrl)" class="invalid-feedback d-block">
+            {{formChecker.getFormControlErrorText(tagsInputCtrl) }} </div>
+           
+        <div class="tag-overview p-2 d-flex flex-wrap">
+            <button   *ngFor="let tag of tagStore" type="button" class="btn btn-primary" (click)="deleteTag(tag)">
+                {{tag}} <span class="badge badge-light"><i class="fa-solid fa-delete-left"></i></span>
+            </button>
+        </div>
+    </form>
+</div>

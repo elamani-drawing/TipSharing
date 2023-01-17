@@ -1,0 +1,22 @@
+
+.form-register-login {
+    width: 100%;
+    max-width: 800px;
+    padding: 15px;
+    margin: auto;
+}
+input {
+    width: 350px;
+}
+
+@media screen and (max-width: 750px) {
+    .form-register-login .formulaire-champs {
+        flex-direction: column;
+    }
+    .form-register-login {
+        max-width: 500px;
+    }
+    input {
+        width: 100%;
+    };
+}

@@ -1,0 +1,19 @@
+<!-- Un composant tips  -->
+
+<h1 class="text-center">Gestions des tips</h1>
+
+<div class="tip-card w-75" *ngFor="let tip of tips">
+    <!-- si c'est un lien de l'api   -->
+    <img *ngIf="!linkToolService.isExternalLink(tip.picture)" src="{{linkToolService.buildLinkPictureTip(tip.picture)}}"
+        alt="">
+    <!-- si c'est un lien d'un autre site  -->
+    <img *ngIf="linkToolService.isExternalLink(tip.picture)" src="{{tip.picture}}" alt="">
+    <h2>{{ tip.title | uppercase }} <span class="text-success" *ngIf="tip.isValidate">(Valider)</span> <span
+            class="text-danger" *ngIf="!tip.isValidate">(En attente de validation)</span></h2>
+    <p>{{ tip.astuce}}</p>
+    <div class="boutons d-flex flex-wrap gap-3">
+        <!-- <button class="btn btn-link" (click)="onViewTip(tip.id)">Voir plus</button> -->
+        <button class="btn btn-success" *ngIf="canValidate" (click)="valideTip(tip.id)">Valider</button>
+        <button class="btn btn-danger" (click)="deleteTip(tip.id)">Supprimer</button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+/* formulaire de login et register */
+
+.form-register-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-register-login .checkbox {
+    font-weight: 400;
+}
+
+.form-register-login .form-floating:focus-within {
+    z-index: 2;
+}

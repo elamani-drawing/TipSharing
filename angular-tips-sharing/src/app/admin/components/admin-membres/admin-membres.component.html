@@ -1,0 +1,29 @@
+<div class="text-center p-5">
+    <h1>MEMBRES</h1>
+</div>
+
+<div>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Email</th>
+                <th scope="col">isAdmin</th>
+                <th scope="col">Bannir / Débannir</th>
+                <th scope="col">Promouvoir</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let membre of membres; let i = index;">
+                <td>{{i + 1}}</td>
+                <td>{{ membre.pseudo }}</td>
+                <td>{{ membre.email }}</td>
+                <td>{{ membre.isAdmin }}</td>
+                <td><button class="btn btn-danger" (click)="adminBanOrUnbanMember(membre)">{{ membre.isActif }}</button></td>
+                <td><button class="btn btn-success" (click)="adminAdd(membre.pseudo)">Promouvoir</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

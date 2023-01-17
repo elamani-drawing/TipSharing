@@ -1,0 +1,110 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-4">
+                    <!-- chargement des informations de profil  -->
+                    <app-profil-info [membre]="membre"></app-profil-info>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 container-content-profil">
+            <!-- si on a pas d'erruer et on a un message, c'est forcement un succes -->
+            <div *ngIf="showMessageServeur && showMessageServeur.error==false && showMessageServeur.message.length>0"
+                class="alert alert-success">
+                {{showMessageServeur.message}} </div>
+            <!-- message d'erreur sur l'email  -->
+            <div *ngIf="showMessageServeur && showMessageServeur.formulaire=='password' && showMessageServeur.error"
+                class="alert alert-danger">
+                {{showMessageServeur.message}} </div>
+            <div class="card mb-4">
+                <div class="sub-form-gray border border-white rounded p-3">
+                    <h1 class="h3 mb-3 fw-normal">Modifier votre mot de passe</h1>
+                    <form *ngIf="mainForm" [formGroup]="mainForm">
+                        <div class="form-floating mt-1">
+                            <input type="password" formControlName="password" class="form-control"
+                                placeholder="mot de passe" [ngClass]="formChecker.inputValideOrInvalid(passwordCtrl)">
+                            <label>Mot de passe actuel</label>
+                            <div *ngIf="formChecker.inputIsValid(passwordCtrl)" class="invalid-feedback d-block">
+                                {{formChecker.getFormControlErrorText(passwordCtrl) }} </div>
+                        </div>
+                        <div *ngIf="passwordForm" [formGroup]="passwordForm">
+                            <div class="form-floating mt-1">
+                                <input type="password" formControlName="newPasswordCtrl" class="form-control"
+                                    placeholder="mot de passe"
+                                    [ngClass]="formChecker.inputValideOrInvalid(newPasswordCtrl)">
+                                <label>Nouveau mot de passe</label>
+                                <div *ngIf="formChecker.inputIsValid(newPasswordCtrl)" class="invalid-feedback d-block">
+                                    {{formChecker.getFormControlErrorText(newPasswordCtrl) }} </div>
+                            </div>
+                            <div class="form-floating mt-1">
+                                <input type="password" formControlName="confirmNewPasswordCtrl" class="form-control"
+                                    placeholder="mot de passe"
+                                    [ngClass]="formChecker.inputValideOrInvalid(confirmNewPasswordCtrl)">
+                                <label>Confirmer votre nouveau mot de passe</label>
+                                <div *ngIf="formChecker.inputIsValid(confirmNewPasswordCtrl)"
+                                    class="invalid-feedback d-block">
+                                    {{formChecker.getFormControlErrorText(confirmNewPasswordCtrl) }} </div>
+                            </div>
+                            <div *ngIf="showPasswordError$ | async" class="invalid-feedback d-block"> Les deux mots
+                                de passe ne
+                                correspondent
+                                pas </div>
+                        </div>
+                        <button class="mt-4 btn btn-primary"
+                            [disabled]="loadingPassword || passwordForm.invalid || !passwordForm.touched"
+                            (click)="passwordSubmit()">Sauvegarder</button>
+
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="showMessageServeur && showMessageServeur.formulaire=='email' && showMessageServeur.error"
+                class="alert alert-danger">
+                {{showMessageServeur.message}} </div>
+            <div class="card mb-4">
+                <div class="card mb-4">
+                    <div class="sub-form-gray border border-white rounded p-3">
+                        <h1 class="h3 mb-3 fw-normal">Modifier votre mail</h1>
+                        <form *ngIf="mainForm" [formGroup]="mainForm">
+                            <div class="form-floating mt-1">
+                                <input type="email" formControlName="email" class="form-control"
+                                    [ngClass]="formChecker.inputValideOrInvalid(emailCtrl)" placeholder="Mail actuel">
+                                <label>Mail actuel</label>
+                                <div *ngIf="formChecker.inputIsValid(emailCtrl)" class="invalid-feedback d-block">
+                                    {{formChecker.getFormControlErrorText(emailCtrl) }} </div>
+                            </div>
+                            <div *ngIf="emailForm" [formGroup]="emailForm">
+                                <div class="form-floating mt-1">
+                                    <input type="email" formControlName="newEmailCtrl" class="form-control"
+                                        [ngClass]="formChecker.inputValideOrInvalid(newEmailCtrl)"
+                                        placeholder="nouveau email">
+                                    <label>Nouveau mail</label>
+                                    <div *ngIf="formChecker.inputIsValid(newEmailCtrl)"
+                                        class="invalid-feedback d-block">
+                                        {{formChecker.getFormControlErrorText(newEmailCtrl) }} </div>
+                                </div>
+                                <div class="form-floating mt-1">
+                                    <input type="email" formControlName="confirmNewEmailCtrl" class="form-control"
+                                        [ngClass]="formChecker.inputValideOrInvalid(confirmNewEmailCtrl)"
+                                        placeholder="confirmer email">
+                                    <label>Confirmer votre nouveau mail</label>
+                                    <div *ngIf="formChecker.inputIsValid(confirmNewEmailCtrl)"
+                                        class="invalid-feedback d-block">
+                                        {{formChecker.getFormControlErrorText(confirmNewEmailCtrl) }} </div>
+                                </div>
+                                <div *ngIf="showEmailError$ | async" class="invalid-feedback d-block"> Les deux
+                                    adresses
+                                    mail ne
+                                    correspondent
+                                    pas </div>
+                            </div>
+                            <button class="mt-4 btn btn-primary"
+                                [disabled]="loadingEmail || emailForm.invalid || !emailForm.touched"
+                                (click)="emailSubmit()">Sauvegarder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

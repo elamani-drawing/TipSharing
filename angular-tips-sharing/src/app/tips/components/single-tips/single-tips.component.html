@@ -1,0 +1,72 @@
+<div class="container" *ngFor="let tip of tips">
+    <div class="tips">
+        <div class="header">
+            <div class="article-img">
+                <!-- si c'est un lien de l'api   -->
+                <img *ngIf="!linkToolService.isExternalLink(tip.picture)"
+                    src="{{linkToolService.buildLinkPictureTip(tip.picture)}}" alt="Photo du tip {{tip.title}}">
+                <!-- si c'est un lien d'un autre site  -->
+                <img *ngIf="linkToolService.isExternalLink(tip.picture)" src="{{tip.picture}}"
+                    alt="Photo du tip {{tip.title}}">
+            </div>
+            <div class="creator d-flex flex-row align-items-center gap-3 pt-3 pb-3">
+                <!-- si c'est un lien de l'api   -->
+                <img class="picture" *ngIf="!linkToolService.isExternalLink(tip.User.picture)"
+                    src="{{linkToolService.buildLinkPictureMember(tip.User.picture)}}"
+                    alt="Photo de profil de {{tip.User.pseudo}}">
+                <!-- si c'est un lien d'un autre site  -->
+                <img class="picture" *ngIf="linkToolService.isExternalLink(tip.User.picture)" src="{{tip.User.picture}}"
+                    alt="Photo de profil de {{tip.User.pseudo}}">
+                <span>
+                    <h6 routerLink="/profil/{{tip.User.pseudo}}">{{tip.User.pseudo}}</h6>
+                </span>
+            </div>
+        </div>
+        <div class="metadata gap-3">
+            <div class="details p-3" *ngIf="tipInfo && tipInfo.length>0">
+                <h3>Informations:</h3>
+                <div class="tableau">
+                    <div class="ligne">
+                        Type : {{tipInfo[0].Type.label}}
+                    </div>
+                    <div class="ligne">
+                        Rarete : {{tipInfo[0].Rarete.label}}
+                    </div>
+                    <div class="last-ligne">
+                        Manière d'obtention : {{tipInfo[0].Obtention.label}}
+                    </div>
+                </div>
+            </div>
+            <app-tag-list [tags]="tags"></app-tag-list>
+        </div>
+    </div>
+    <div class="content">
+        <div class="title">
+            <h3>{{tip.title}}</h3>
+        </div>
+        <div class="astuce">
+            {{tip.astuce}}
+        </div>
+    </div>
+    <!-- il est possible de poster un commentaire que si l'utilisateur est connecter -->
+    <div class="poster mt-4" *ngIf="authService.connected && mainForm" [formGroup]="mainForm">
+        <div class="input-group mb-3">
+            <textarea id="form7" formControlName="commentaireCtrl" class="md-textarea form-control" rows="1"
+                placeholder="Laissez un commentaire..."
+                [ngClass]="formChecker.inputValideOrInvalid(commentaireCtrl)"></textarea>
+            <div class="input-group-append">
+                <button class="btn rounded-right" type="button" [disabled]="!canCreate"
+                    (click)="posteUnCommentaire()">Commenter</button>
+            </div>
+        </div>
+        <!-- affichage des messages d'erreur  -->
+        <div *ngIf="formChecker.inputIsValid(commentaireCtrl)" class="invalid-feedback d-block">
+            {{formChecker.getFormControlErrorText(commentaireCtrl) }} </div>
+    </div>
+    <div class="commentaires" *ngIf="tips && commentaires">
+        <!-- on ajoute la classe grey a tout les elements paire -->
+        <app-commentaire-tips *ngFor="let commentaire of commentaires; let index=index" [tip]="tip"
+            [commentaire]="commentaire" [index]="index" [user]="user"
+            (commentaireDeleteEmitter)="eventCommentaireDelete($event)"></app-commentaire-tips>
+    </div>
+</div>

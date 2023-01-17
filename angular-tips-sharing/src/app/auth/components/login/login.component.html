@@ -1,0 +1,33 @@
+<div class="form-register-login">
+    <form [formGroup]="mainForm">
+        <h1 class="h3 mb-3 fw-normal">Connexion</h1>
+
+        <div *ngIf="!!messageServeur && messageServeur.message" class="alert alert-danger text-center">
+            {{ messageServeur.message }} </div>
+
+        <div class="form-floating mt-1">
+            <input formControlName="username" type="text" class="form-control" placeholder="Pseudo/Email"
+                [ngClass]="formChecker.inputValideOrInvalid(usernameCtrl)">
+            <label>Pseudo/Email</label>
+            <div *ngIf="formChecker.inputIsValid(usernameCtrl)" class="invalid-feedback d-block">
+                {{formChecker.getFormControlErrorText(usernameCtrl) }} </div>
+        </div>
+
+        <div class="form-floating mt-1">
+            <input formControlName="password" type="password" class="form-control" placeholder="Mot de passe"
+                [ngClass]="formChecker.inputValideOrInvalid(passwordCtrl)">
+            <label>Password</label>
+            <div *ngIf="formChecker.inputIsValid(passwordCtrl)" class="invalid-feedback d-block">
+                {{formChecker.getFormControlErrorText(passwordCtrl) }} </div>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit"
+            [disabled]="loading || mainForm.invalid || !mainForm.touched" (click)="onSubmitForm()">
+            Me connecter
+            <div  *ngIf="loading" class="spinner-border text-light" role="status">
+                <span class="sr-only"></span>
+              </div>
+        </button>
+    
+    </form>
+</div>

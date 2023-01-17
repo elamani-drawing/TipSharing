@@ -1,0 +1,6 @@
+<!-- Un composant liste de tips -->
+
+<div class="list-tips">
+  <!-- parcour du tableau de tip on passe chaque tip en au TipComposant pour qu'il soccupe de l'affichage -->
+  <app-tip *ngFor="let tipElement of tips_list" [tip]="tipElement"></app-tip>
+</div>

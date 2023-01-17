@@ -1,0 +1,78 @@
+<h1 class="text-center mt-4">Creer votre Tip!</h1>
+<div class="d-flex justify-content-center mt-2">
+    <form [formGroup]="mainForm" class="w-75">
+        <!-- les autres inputs -->
+        <div *ngIf="formulaireMessageError!=''" class="mt-3 alert alert-danger text-center">
+            {{ formulaireMessageError }}
+        </div>
+        <div *ngIf="formulaireMessageSucces!=''" class="mt-3 alert alert-success text-center">
+            {{ formulaireMessageSucces }}
+        </div>
+        <div>
+            <div class="mb-2">
+                <label for="formFile" class="form-label">Photo de profil </label>
+                <input type="file" formControlName="picture" class="form-control"
+                    [ngClass]="formChecker.inputValideOrInvalid(pictureCtrl)" (change)="onFileSelected($event)"
+                    placeholder="picture">
+                <div *ngIf="formChecker.inputIsValid(pictureCtrl)" class="invalid-feedback d-block">
+                    {{formChecker.getFormControlErrorText(pictureCtrl) }}
+                </div>
+            </div>
+            <div class="form-floating mt-1">
+                <input formControlName="title" class="form-control" [formControl]="titleCtrl"
+                    [ngClass]="formChecker.inputValideOrInvalid(titleCtrl)" placeholder="title">
+                <label>Titre du tip</label>
+                <div *ngIf="formChecker.inputIsValid(titleCtrl)" class="invalid-feedback d-block">
+                    {{formChecker.getFormControlErrorText(titleCtrl) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Contenu de l'astuce</label>
+                <textarea class="form-control" [formControl]="contentCtrl"
+                    [ngClass]="formChecker.inputValideOrInvalid(contentCtrl)" id="content" rows="3"></textarea>
+                <div *ngIf="formChecker.inputIsValid(contentCtrl)" class="invalid-feedback d-block">
+                    {{formChecker.getFormControlErrorText(contentCtrl) }}
+                </div>
+            </div>
+            <div class="mt-3" *ngIf="types.length>0">
+                <label for="content">Type de l'objet</label>
+                <select class="form-select mt-2" size="3" [formControl]="typeCtrl">
+                    <!-- <option selected value="{{types[0].label}}">{{types[0].label}}</option> -->
+                    <option *ngFor="let _type of types;let index = index;" value="{{_type.label}}">
+                        {{_type.label}}</option>
+                </select>
+            </div>
+            <div class="mt-3" *ngIf="raretes.length>0">
+                <label for="content">Niveau de rareté de l'objet</label>
+                <select class="form-select mt-2" size="3" [formControl]="rareteCtrl">
+                    <!-- <option selected value="{{raretes[0].label}}">{{raretes[0].label}}</option> -->
+                    <option *ngFor="let _rarete of raretes;let index = index;" value="{{_rarete.label}}">
+                        {{_rarete.label}}</option>
+                </select>
+            </div>
+            <div class="mt-3" *ngIf="obtentions.length>0">
+                <label for="content">Manière d'obtenir l'objet</label>
+                <select class="form-select mt-2" size="3" [formControl]="obtentionCtrl">
+                    <!-- <option selected value="{{obtentions[0].label}}">{{obtentions[0].label}}</option> -->
+                    <option *ngFor="let _obtention of obtentions;let index = index;" value="{{_obtention.label}}">
+                        {{_obtention.label}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- gestion des tags -->
+        <!-- message d'erreur des tags -->
+        <div *ngIf="!!tagsInputError && !tagsInputError.valide" class="mt-3 alert alert-danger text-center">
+            {{ tagsInputError.message }}
+        </div>
+        <app-tag-input (tagEmitter)="eventTagUpdate($event)"></app-tag-input>
+
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit" [disabled]="loading || !formulaireReady"
+            (click)="onSubmitForm()">
+            Creer le tip
+            <div *ngIf="loading" class="spinner-border text-light" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </button>
+    </form>
+</div>

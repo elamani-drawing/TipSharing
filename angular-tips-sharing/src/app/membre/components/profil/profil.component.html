@@ -1,0 +1,38 @@
+<div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-4">
+                        <!-- chargement des informations de profil  -->
+                        <app-profil-info [membre]="membre"></app-profil-info>
+                        <!-- bouton pour modifier ces informations  -->
+                        <h6 class="mt-2" *ngIf="pseudo==''">Modifier mes informations</h6>
+                        <div class="action-profil d-flex gap-2 mt-2" *ngIf="pseudo==''">
+                            <a routerLink="/edit"
+                                class="btn btn-outline-primary w-50 d-flex justify-content-center align-items-center gap-2"><span
+                                    class="">Profil</span> <i class="fa-regular fa-pen-to-square"></i></a>
+                            <a routerLink="/identifiants"
+                                class="btn btn-outline-primary w-50 d-flex justify-content-center align-items-center gap-2"><span
+                                    class="">Identifiants</span> <i class="fa-regular fa-pen-to-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 container-content-profil">
+                <div class="card mb-4">
+
+                    <a  *ngIf="pseudo==''" routerLink="/gestion-tips"
+                    class="btn btn-outline-primary d-flex justify-content-center align-items-center gap-2"><span
+                        class="">Gérer mes tips</span> <i class="fa-regular fa-pen-to-square"></i></a>
+                    <h1 class="h3 mb-3 fw-normal text-center pt-2"><span *ngIf="pseudo==''">Mes tips</span><span
+                            *ngIf="pseudo!=''">Les tips de
+                            {{pseudo}}</span></h1>
+                    <div class="card-body">
+                        <app-tips-list [tips_list]="tips_profil"></app-tips-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
