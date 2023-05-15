@@ -2,6 +2,6 @@
 
 Pour plus de détail, vous pouvez lire [le sujet complet](./express-js-tips-sharing/annexe/Projet2.pdf).
 
-Vous pouvez retrouver la documentation complete du projet [ici](/documentations/).
+Vous pouvez retrouver la documentation complete du projet [ici](/documentation/).
 
 PS: Le mot de passe de tous les comptes generer par fakers est "MotDepasse42$".
